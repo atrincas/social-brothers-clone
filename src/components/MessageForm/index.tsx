@@ -1,32 +1,43 @@
 import React from 'react'
-import { FormContainer, Paragraph } from '../../styles'
+
+import { SelectComponent } from './SelectComponent'
+import {
+  FormContainer,
+  FormSection,
+  ButtonContainer,
+  StyledButton,
+  TextInput,
+  TextArea
+} from '../../styles'
 
 export default function MessageForm() {
   return (
     <FormContainer>
-      <Paragraph>
+      <FormSection>
         <label htmlFor="title">Berichtnaam</label>
-        <input type="text" id="title" name="title" placeholder="Geen titel" value="" />
-      </Paragraph>
+        <TextInput type="text" id="title" name="title" placeholder="Geen titel" value="" />
+      </FormSection>
 
-      <Paragraph>
+      <FormSection>
         <label htmlFor="category-select">Categorie</label>
-        <select name="categories" id="category-select">
+        <SelectComponent name="categories" id="category-select">
           <option value="">Geen categorie</option>
           <option value="een">een</option>
           <option value="twee">twee</option>
           <option value="drie">drie</option>
-        </select>
-      </Paragraph>
+        </SelectComponent>
+      </FormSection>
 
-      <Paragraph>
+      <FormSection>
         <label htmlFor="message">Bericht</label>
-        <textarea id="message" name="message" rows={20} cols={33}></textarea>
-      </Paragraph>
+        <TextArea id="message" name="message" rows={20} cols={33}></TextArea>
+      </FormSection>
 
-      <Paragraph>
-        <input type="submit" value="Bericht aanmaken" />
-      </Paragraph>
+      <FormSection>
+        <ButtonContainer>
+          <StyledButton type="submit">Bericht aanmaken</StyledButton>
+        </ButtonContainer>
+      </FormSection>
     </FormContainer>
   )
 }
