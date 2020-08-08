@@ -60,7 +60,9 @@ export default function MessageForm({ categories }: Props) {
             value={!categoryId ? '' : categoryId.toString()}
             onChange={(e) => handleOnChange(e.target.name, e.target.value)}
           >
-            <option value="">Geen categorie</option>
+            <option value="" disabled>
+              Geen categorie
+            </option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}

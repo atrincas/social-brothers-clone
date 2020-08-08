@@ -164,17 +164,22 @@ export const SelectContainer = styled.div`
 export const StyledArrowIcon = styled(ArrowIcon)`
   position: absolute;
   right: 10px;
-  top: 15px;
+  top: 20px;
   width: 0.75rem;
   pointer-events: none;
 `
 
 export const StyledSelect = styled.select`
+  color: ${({ theme }) => theme.colors.darkGray};
   background-color: ${({ theme }) => theme.colors.lightGray};
   padding: 15px;
   border: none;
   appearance: none;
   width: 100%;
+
+  option:not(:first-of-type) {
+    color: ${({ theme }) => theme.colors.black};
+  }
 `
 
 export const TextArea = styled.textarea`
