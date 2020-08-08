@@ -57,7 +57,12 @@ function messageForm(state = initMessageForm, action: Action) {
     case 'FORM_VALUE_CHANGED':
       if (!action.name) return state
       const formValues = { ...state.formValues, [action.name]: action.value }
-      return { ...state, formValues }
+
+      if (state.errors) {
+        return { ...state, errors: null, formValues }
+      } else {
+        return { ...state, formValues }
+      }
     case 'SUBMIT_MESSAGE_SUCCESFUL':
       return { ...newState, succes: true, succesMessage: action.value }
     case 'SUBMIT_MESSAGE_FAILED':
