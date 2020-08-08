@@ -1,32 +1,23 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Post } from './Post'
 import { PostsContainer, PostsList, StyledButton, ButtonContainer } from '../../styles'
-
-type Post = {
-  id: number
-  created_at: string
-  updated_at: string
-  title: string
-  content: string
-  category_id: number | null
-  img_url: string
-  category: {
-    id: number
-    name: string
-    created_at: null
-    updated_at: null
-  } | null
-}
+import { PostObj } from '../../types'
+import { fetchPosts, getLoadMorePosts } from '../../store'
 
 type Props = {
-  posts: Post[]
+  posts: PostObj[]
 }
 
 export default function Posts({ posts }: Props) {
-  function loadMorePosts() {
-    console.log('load more posts')
+  const loadMorePosts = useSelector(getLoadMorePosts)
+  const dispatch = useDispatch()
+
+  function handleOnclick() {
+    dispatch(fetchPosts())
   }
+
   return (
     <PostsContainer>
       <PostsList>
@@ -42,11 +33,13 @@ export default function Posts({ posts }: Props) {
           />
         ))}
       </PostsList>
-      <ButtonContainer>
-        <StyledButton type="button" onClick={loadMorePosts}>
-          Meer Laden
-        </StyledButton>
-      </ButtonContainer>
+      {loadMorePosts && (
+        <ButtonContainer>
+          <StyledButton type="button" onClick={handleOnclick}>
+            Meer Laden
+          </StyledButton>
+        </ButtonContainer>
+      )}
     </PostsContainer>
   )
 }

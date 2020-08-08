@@ -3,13 +3,16 @@ import styled from 'styled-components'
 import img from '../assets/images/Foto-Social-Brothers.jpg'
 import { ReactComponent as ArrowIcon } from '../assets/icons/arrow-down.svg'
 
+const mobileUp = '@media (min-width: 675px)'
+const desktopUp = '@media (min-width: 1080px)'
+
 export const MainContainer = styled.main`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 20px;
   grid-gap: 20px;
 
-  @media (min-width: 1080px) {
+  ${desktopUp} {
     grid-template-columns: 1fr 2fr;
     padding: 40px;
   }
@@ -25,7 +28,7 @@ export const HeaderContainer = styled.header`
   background-size: cover;
   height: 300px;
 
-  @media (min-width: 1080px) {
+  ${desktopUp} {
     background-attachment: fixed;
     background-position: center center;
     min-height: 350px;
@@ -43,8 +46,13 @@ export const MainHeading = styled.h1`
 
 export const FormContainer = styled.form`
   padding: 20px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
   max-height: 650px;
+
+  ${mobileUp} {
+    position: sticky;
+    top: 40px;
+  }
 `
 
 export const FormSection = styled.div`
@@ -58,7 +66,8 @@ export const FormSection = styled.div`
 
 export const PostsContainer = styled.div`
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
+  overflow-anchor: none;
 `
 
 export const PostsList = styled.div`
@@ -156,6 +165,8 @@ export const StyledArrowIcon = styled(ArrowIcon)`
   position: absolute;
   right: 10px;
   top: 15px;
+  width: 0.75rem;
+  pointer-events: none;
 `
 
 export const StyledSelect = styled.select`
@@ -171,4 +182,31 @@ export const TextArea = styled.textarea`
   padding: 15px;
   border: none;
   resize: none;
+`
+
+export const ErrorMessage = styled.div`
+  font-style: italic;
+  color: ${({ theme }) => theme.colors.lightOrange};
+`
+
+export const SuccesMessageContainer = styled.div``
+
+export const SuccesMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 75px;
+  padding: 20px;
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.lightOrange};
+
+  ${mobileUp} {
+    position: sticky;
+    top: 40px;
+  }
+
+  p {
+    padding-bottom: 10px;
+  }
 `
