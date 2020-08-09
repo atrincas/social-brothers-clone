@@ -6,15 +6,24 @@ import { ReactComponent as ArrowIcon } from '../assets/icons/arrow-down.svg'
 const mobileUp = '@media (min-width: 675px)'
 const desktopUp = '@media (min-width: 1080px)'
 
-export const MainContainer = styled.main`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+const IE11MainContainer = styled.main`
+  display: flex;
   padding: 20px;
-  grid-gap: 20px;
 
   ${desktopUp} {
-    grid-template-columns: 1fr 2fr;
     padding: 40px;
+  }
+`
+
+export const MainContainer = styled(IE11MainContainer)`
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+
+    ${desktopUp} {
+      grid-template-columns: 1fr 2fr;
+    }
   }
 `
 
@@ -44,7 +53,15 @@ export const MainHeading = styled.h1`
   }
 `
 
-export const FormContainer = styled.form`
+const IE11FormContainer = styled.form`
+  margin-right: 20px;
+`
+
+export const FormContainer = styled(IE11FormContainer)`
+  @supports (display: grid) {
+    margin-right: 0;
+  }
+
   padding: 20px;
   background-color: ${({ theme }) => theme.colors.white};
   max-height: 650px;
