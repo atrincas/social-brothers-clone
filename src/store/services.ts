@@ -1,5 +1,7 @@
 import { PostObj, Category } from '../types'
 
+let token = process.env.REACT_APP_API_TOKEN as string
+
 export class ApiService {
   handleError(error: Error) {
     console.error(error)
@@ -11,7 +13,7 @@ export class ApiService {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Token': process.env.REACT_APP_API_TOKEN as string
+          'Token': token
         }
       })
       const json = await response.json()
@@ -27,7 +29,7 @@ export class ApiService {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Token': process.env.REACT_APP_API_TOKEN as string
+          'Token': token
         },
         body: JSON.stringify({ title: title, content: content, category_id: categoryId })
       })
