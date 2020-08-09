@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import img from '../assets/images/Foto-Social-Brothers.jpg'
 import { ReactComponent as ArrowIcon } from '../assets/icons/arrow-down.svg'
 
-const mobileUp = '@media (min-width: 675px)'
+const tabletUp = '@media (min-width: 801px)'
 const desktopUp = '@media (min-width: 1080px)'
 
 const IE11MainContainer = styled.main`
@@ -18,8 +18,11 @@ const IE11MainContainer = styled.main`
 export const MainContainer = styled(IE11MainContainer)`
   @supports (display: grid) {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 20px;
+
+    ${tabletUp} {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 
     ${desktopUp} {
       grid-template-columns: 1fr 2fr;
@@ -64,9 +67,8 @@ export const FormContainer = styled(IE11FormContainer)`
 
   padding: 20px;
   background-color: ${({ theme }) => theme.colors.white};
-  max-height: 650px;
 
-  ${mobileUp} {
+  ${tabletUp} {
     position: sticky;
     top: 40px;
   }
@@ -157,6 +159,10 @@ export const StyledButton = styled.button`
     background-size: 100%;
     transition: background 0s;
   }
+
+  &:focus {
+    outline: none;
+  }
 `
 
 export const SubmitButton = styled.input`
@@ -223,7 +229,7 @@ export const SuccesMessage = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.lightOrange};
 
-  ${mobileUp} {
+  ${tabletUp} {
     position: sticky;
     top: 40px;
   }
