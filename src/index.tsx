@@ -1,8 +1,14 @@
+/*IE11 support */
+import 'react-app-polyfill/ie11'
+import 'react-app-polyfill/stable'
+/* */
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider as StoreProvider } from 'react-redux'
 import thunk from 'redux-thunk'
+
 import App from './App'
 import rootReducer from './store'
 
