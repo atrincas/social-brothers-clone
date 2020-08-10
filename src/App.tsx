@@ -2,9 +2,7 @@ import React, { Suspense, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
-// import Header from './components/Header'
 import MessageForm from './components/MessageForm'
-// import Posts from './components/Posts'
 import Loader from './components/Loader'
 
 import { MainContainer, GlobalStyle, theme } from './styles'
