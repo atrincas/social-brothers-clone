@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import img from '../assets/images/Foto-Social-Brothers.jpg'
 import { ReactComponent as ArrowIcon } from '../assets/icons/arrow-down.svg'
@@ -236,5 +236,54 @@ export const SuccesMessage = styled.div`
 
   p {
     padding-bottom: 10px;
+  }
+`
+
+const stretchDelay = keyframes`
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+  }
+
+  20% { 
+    transform: scaleY(1.0);
+  }
+`
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`
+
+export const LoaderBase = styled.div`
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+
+  & > div {
+    display: inline-block;
+    background-color: #e95e30;
+    height: 100%;
+    width: 6px;
+    margin-right: 2px;
+    animation: ${stretchDelay} 1.2s infinite ease-in-out;
+  }
+
+  .rect2 {
+    animation-delay: -1.1s;
+  }
+
+  .rect3 {
+    animation-delay: -1s;
+  }
+
+  .rect4 {
+    animation-delay: -0.9s;
+  }
+
+  .rect5 {
+    animation-delay: -0.8s;
   }
 `

@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import Header from './components/Header'
 import MessageForm from './components/MessageForm'
 import Posts from './components/Posts'
+import Loader from './components/Loader'
 
 import { MainContainer, GlobalStyle, theme } from './styles'
 import { fetchPosts, fetchCategories, getPosts, getPageNr, getCategories, setPageNr } from './store'
@@ -28,7 +29,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts])
 
-  if (posts.length === 0 || categories.length === 0) return null
+  if (posts.length === 0 || categories.length === 0) return <Loader />
 
   return (
     <ThemeProvider theme={theme}>

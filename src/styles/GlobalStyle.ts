@@ -5,11 +5,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
 @font-face {
   font-family: 'Titillium Web';
   src: url('fonts/TitilliumWeb-Regular.ttf');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Mulish';
   src: url('fonts/Mulish-Bold.ttf');
+  font-display: swap;
 }
 
 body,
