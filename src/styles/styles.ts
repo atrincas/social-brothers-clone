@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 
-import img from '../assets/images/Foto-Social-Brothers.jpg'
+import backgroundMobile from '../assets/images/Foto-Social-Brothers.webp'
+import backgroundDesktop from '../assets/images/Foto-Social-Brothers.jpg'
 import { ReactComponent as ArrowIcon } from '../assets/icons/arrow-down.svg'
 
 const tabletUp = '@media (min-width: 801px)'
@@ -35,12 +36,15 @@ export const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
   color: #fff;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${img}) no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(${backgroundMobile}) no-repeat;
   background-position: top center;
   background-size: cover;
   height: 300px;
 
-  ${desktopUp} {
+  ${tabletUp} {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url(${backgroundDesktop}) no-repeat;
     background-attachment: fixed;
     background-position: center center;
     min-height: 350px;
