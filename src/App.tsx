@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
-import Header from './components/Header'
+// import Header from './components/Header'
 import MessageForm from './components/MessageForm'
-import Posts from './components/Posts'
+// import Posts from './components/Posts'
 import Loader from './components/Loader'
 
 import { MainContainer, GlobalStyle, theme } from './styles'
 import { fetchPosts, fetchCategories, getPosts, getPageNr, getCategories, setPageNr } from './store'
 
 export type ThemeType = typeof theme
+
+const Header = React.lazy(() => import('./components/Header'))
+const Posts = React.lazy(() => import('./components/Posts'))
 
 function App() {
   const posts = useSelector(getPosts)
@@ -33,11 +36,13 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <MainContainer>
-        <MessageForm categories={categories} />
-        <Posts posts={posts} />
-      </MainContainer>
+      <Suspense fallback={<Loader />}>
+        <Header />
+        <MainContainer>
+          <MessageForm categories={categories} />
+          <Posts posts={posts} />
+        </MainContainer>
+      </Suspense>
       <GlobalStyle />
     </ThemeProvider>
   )
